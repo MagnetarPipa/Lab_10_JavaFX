@@ -16,6 +16,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 
+
+
 public class HelloApplication extends Application {
 
     public static Triangles_List tri_list = new Triangles_List();
@@ -143,8 +145,10 @@ public class HelloApplication extends Application {
         root.getChildren().add(maxRightTriangleSquare_label);
         root.getChildren().add(identicalRightTriangles_label);
 
+
         stage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Green_equilateral_triangle_point_up.svg/2363px-Green_equilateral_triangle_point_up.svg.png"));
-        stage.setTitle("Triangles TableView");
+
+        stage.setTitle("Triangles TableView");//./src/JSON_Ser_Triangles/
 
 
         Scene scene = new Scene(root, 1300, 500);
@@ -189,7 +193,7 @@ public class HelloApplication extends Application {
             right_triangle_list.add(new RightTriangle(X1, X2, X3, Y1, Y2, Y3));//Чтобы объект не пересоздавать,называется анонимный объект
             right_tri_list.add(new RightTriangle(X1, X2, X3, Y1, Y2, Y3));
         }
-
+        right_tri_list.add(new Triangle(0,0,0,6,4,1));
 
         return right_triangle_list;
 

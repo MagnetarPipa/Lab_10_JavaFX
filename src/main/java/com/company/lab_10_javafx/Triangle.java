@@ -188,7 +188,7 @@ public class Triangle {
     public double getSquare() {
 
         double perimeter = getPerimeter() / 2;
-        return Math.round(Math.sqrt(perimeter * (perimeter - getLengthA()) * (getLengthB()) * (perimeter - getLengthC())));
+        return Math.sqrt(perimeter * (perimeter - getLengthA()) * (getLengthB()) * (perimeter - getLengthC()));
     }
 
     public void setSquare(double square) {
