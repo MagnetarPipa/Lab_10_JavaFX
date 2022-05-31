@@ -3,12 +3,20 @@ package com.company.lab_10_javafx;
 
 public class Triangle {
 
-    private int x1;
-    private int x2;
-    private int x3;
-    private int y1;
-    private int y2;
-    private int y3;
+    protected int x1;
+    protected int x2;
+    protected int x3;
+    protected int y1;
+    protected int y2;
+    protected int y3;
+    protected double sideA;
+    protected double sideB;
+    protected double sideC;
+    protected double angleA;
+    protected double angleB;
+    protected double angleC;
+    protected double perimeter;
+    protected double square;
 
     public Triangle(int x1, int x2, int x3, int y1, int y2, int y3) {
         this.setX1(x1);
@@ -17,6 +25,17 @@ public class Triangle {
         this.setY1(y1);
         this.setY2(y2);
         this.setY3(y3);
+
+        this.setSideA(sideA);
+        this.setSideB(sideB);
+        this.setSideC(sideC);
+        this.setAngleA(angleA);
+        this.setAngleB(angleB);
+        this.setAngleC(angleB);
+
+        this.setPerimeter(perimeter);
+        this.setSquare(square);
+
     }
 
     public static double getSideLength(int x1, int y1, int x2, int y2) {
@@ -32,6 +51,54 @@ public class Triangle {
 
         return (sideA + sideB > sideC) && (sideB + sideC > sideA) && (sideA + sideC > sideB);
 
+    }
+
+    public double getAngleA() {
+        return angleA;
+    }
+
+    public void setAngleA(double angleA) {
+        this.angleA = getAngle_1();
+    }
+
+    public double getAngleB() {
+        return angleB;
+    }
+
+    public void setAngleB(double angleB) {
+        this.angleB = getAngle_2();
+    }
+
+    public double getAngleC() {
+        return angleC;
+    }
+
+    public void setAngleC(double angleC) {
+        this.angleC = getAngle_3();
+    }
+
+    public double getSideA() {
+        return sideA;
+    }
+
+    public void setSideA(double sideA) {
+        this.sideA = getLengthA();
+    }
+
+    public double getSideB() {
+        return sideB;
+    }
+
+    public void setSideB(double sideB) {
+        this.sideB = getLengthB();
+    }
+
+    public double getSideC() {
+        return sideC;
+    }
+
+    public void setSideC(double sideC) {
+        this.sideC = getLengthC();
     }
 
     public int getX1() {
@@ -114,10 +181,18 @@ public class Triangle {
         return getLengthA() + getLengthB() + getLengthC();
     }
 
+    public void setPerimeter(double perimeter) {
+        this.perimeter = getPerimeter();
+    }
+
     public double getSquare() {
 
         double perimeter = getPerimeter() / 2;
         return Math.sqrt(perimeter * (perimeter - getLengthA()) * (getLengthB()) * (perimeter - getLengthC()));
+    }
+
+    public void setSquare(double square) {
+        this.square = getSquare();
     }
 
     @Override

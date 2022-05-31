@@ -1,89 +1,26 @@
 package com.company.lab_10_javafx;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.Insets;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.io.IOException;
 
 public class HelloApplication extends Application {
 
-    public void TrianglesIn() {
-
-        Triangles_List triangles_list = new Triangles_List();
-        final int N = 5;
-        final int M = 5;
-        final int MAX_SIDE_LENGTH = 25;
-        int X1, X2, X3;
-        int Y1, Y2, Y3;
-
-        for (int i = 0; i < N; i++) {
-            while (!Triangle.isTriangleExists(X1 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, X2 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, X3 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, Y1 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, Y2 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, Y3 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5)) {
-            }
-            triangles_list.add(new Triangle(X1, X2, X3, Y1, Y2, Y3));//Чтобы объект не пересоздавать,называется анонимный объект
-        }
-//        tableView.getItems().add(
-//                new Customer("007", "Jane", "Deer"));
-//        tableView.getItems().add(
-//                new Customer("006", "John", "Doe"));
-//        tableView.getItems().add(
-//                new Customer("008", "Mack", "Alamo"));
-
-
-//        for (final  Triangles_List tri : triangles_list) {
-//
-//
-//
-//        }
-
-//
-//        return;
-    }
+    public static Triangles_List tri_list = new Triangles_List();
+    public static Triangles_List right_tri_list = new Triangles_List();
 
     public static void main(String[] args) {
-
-
-        final int MAX_SIDE_LENGTH = 25;
-        final int N = 5;
-        final int M = 5;
-
-        int X1, X2, X3;
-        int Y1, Y2, Y3;
-
-
-        System.out.println("\n----------6_Лабараторная---------\n");
-
-        Triangles_List triangles_list = new Triangles_List();
-        Triangles_List rightTriangles_list = new Triangles_List();
-
-        rightTriangles_list.add(new Triangle(0, 0, 0, 6, 4, 1));
-        rightTriangles_list.add(new Triangle(0, 0, 0, 6, 4, 1));
-
-        for (int i = 0; i < N; i++) {
-            while (!Triangle.isTriangleExists(X1 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, X2 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, X3 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, Y1 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, Y2 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, Y3 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5)) {
-            }
-            triangles_list.add(new Triangle(X1, X2, X3, Y1, Y2, Y3));//Чтобы объект не пересоздавать,называется анонимный объект
-        }
-
-        for (int i = 0; i < M; i++) {
-            while (!Triangle.isTriangleExists(X1 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, X2 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, X3 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, Y1 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, Y2 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, Y3 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5)) {
-            }
-            rightTriangles_list.add(new Triangle(X1, X2, X3, Y1, Y2, Y3));//Чтобы объект не пересоздавать,называется анонимный объект
-        }
-
-
-        System.out.println(triangles_list);
-
-        System.out.println("Triangle with maximal square:" + triangles_list.findTriangle_List_MaxSquare());
-        System.out.println("Right triangle with maximal square:" + rightTriangles_list.findTriangle_List_MaxSquare());
-        System.out.println("Triangle with minimal square:" + triangles_list.findTriangle_List_MinSquare());
-        System.out.println("Right triangle with minimal square:" + rightTriangles_list.findTriangle_List_MinSquare());
-        System.out.println("Numbers of identical right Triangles:" + rightTriangles_list.findIdentical_List_Triangles());
 
         launch();
     }
@@ -91,29 +28,22 @@ public class HelloApplication extends Application {
     @Override
     public void start(Stage stage) throws IOException {
 
-        TableView<Triangle> table = new TableView<Triangle>();
+        TableView<Triangle> triangle_table = new TableView<Triangle>();
 
-        TableColumn<Triangle, String> x1Col
-                = new TableColumn<Triangle, String>("X1");
-
-        TableColumn<Triangle, String> x2Col//
-                = new TableColumn<Triangle, String>("X2");
-
-        TableColumn<Triangle, String> x3Col//
-                = new TableColumn<Triangle, String>("X3");
-
-        TableColumn<Triangle, String> y1Col //
-                = new TableColumn<Triangle, String>("Y1");
-
-        TableColumn<Triangle, String> y2Col //
-                = new TableColumn<Triangle, String>("Y2");
-
-        TableColumn<Triangle, String> y3Col //
-                = new TableColumn<Triangle, String>("Y3");
-
-
-        table.getColumns().addAll(x1Col, x2Col, x3Col);
-
+        TableColumn<Triangle, String> x1Col = new TableColumn<Triangle, String>("X1");
+        TableColumn<Triangle, String> x2Col = new TableColumn<Triangle, String>("X2");
+        TableColumn<Triangle, String> x3Col = new TableColumn<Triangle, String>("X3");
+        TableColumn<Triangle, String> y1Col = new TableColumn<Triangle, String>("Y1");
+        TableColumn<Triangle, String> y2Col = new TableColumn<Triangle, String>("Y2");
+        TableColumn<Triangle, String> y3Col = new TableColumn<Triangle, String>("Y3");
+        TableColumn<Triangle, String> sideACol = new TableColumn<Triangle, String>("Side A");
+        TableColumn<Triangle, String> sideBCol  = new TableColumn<Triangle, String>("Side B");
+        TableColumn<Triangle, String> sideCCol = new TableColumn<Triangle, String>("Side C");
+        TableColumn<Triangle, String> angle_ACol = new TableColumn<Triangle, String>("Angle A");
+        TableColumn<Triangle, String> angle_BCol = new TableColumn<Triangle, String>("Angle B");
+        TableColumn<Triangle, String> angle_CCol = new TableColumn<Triangle, String>("Angle C");
+        TableColumn<Triangle, String> perimeterCol = new TableColumn<Triangle, String>("Perimeter");
+        TableColumn<Triangle, String> squareCol = new TableColumn<Triangle, String>("Square");
 
         x1Col.setCellValueFactory(new PropertyValueFactory<>("x1"));
         x2Col.setCellValueFactory(new PropertyValueFactory<>("x2"));
@@ -121,54 +51,151 @@ public class HelloApplication extends Application {
         y1Col.setCellValueFactory(new PropertyValueFactory<>("y1"));
         y2Col.setCellValueFactory(new PropertyValueFactory<>("y2"));
         y3Col.setCellValueFactory(new PropertyValueFactory<>("y3"));
+        angle_ACol.setCellValueFactory(new PropertyValueFactory<>("angleA"));
+        angle_BCol.setCellValueFactory(new PropertyValueFactory<>("angleB"));
+        angle_CCol.setCellValueFactory(new PropertyValueFactory<>("angleC"));
+        sideACol.setCellValueFactory(new PropertyValueFactory<>("sideA"));
+        sideBCol.setCellValueFactory(new PropertyValueFactory<>("sideB"));
+        sideCCol.setCellValueFactory(new PropertyValueFactory<>("sideC"));
+        perimeterCol.setCellValueFactory(new PropertyValueFactory<>("perimeter"));
+        squareCol.setCellValueFactory(new PropertyValueFactory<>("square"));
 
 
-        // Set Sort type for userName column
+
         x1Col.setSortType(TableColumn.SortType.DESCENDING);
         // y2Col.setSortable(false);
 
-        // Display row data
-//        ObservableList<Triangle> list = getTriagnleList();
-//        table.setItems(list);
+        ObservableList<Triangle> triangles_list = getTriangleList();
+        triangle_table.setItems(triangles_list);
 
-        table.getColumns().addAll(y1Col, y2Col, y3Col);
+        triangle_table.getColumns().addAll(x1Col, x2Col, x3Col,y1Col, y2Col, y3Col,angle_ACol,angle_BCol,angle_CCol,sideACol,sideBCol,sideCCol,perimeterCol,squareCol);
 
-        StackPane root = new StackPane();
+
+        //--------------------------------------------------------------------------------------------------------------------------------------------------------------
+        TableView<Triangle> right_triangle_table = new TableView<Triangle>();
+
+        TableColumn<Triangle, String> right_x1Col = new TableColumn<Triangle, String>("X1");
+        TableColumn<Triangle, String> right_x2Col = new TableColumn<Triangle, String>("X2");
+        TableColumn<Triangle, String> right_x3Col = new TableColumn<Triangle, String>("X3");
+        TableColumn<Triangle, String> right_y1Col = new TableColumn<Triangle, String>("Y1");
+        TableColumn<Triangle, String> right_y2Col = new TableColumn<Triangle, String>("Y2");
+        TableColumn<Triangle, String> right_y3Col = new TableColumn<Triangle, String>("Y3");
+        TableColumn<Triangle, String> right_sideACol = new TableColumn<Triangle, String>("Side A");
+        TableColumn<Triangle, String> right_sideBCol  = new TableColumn<Triangle, String>("Side B");
+        TableColumn<Triangle, String> right_sideCCol = new TableColumn<Triangle, String>("Side C");
+        TableColumn<Triangle, String> right_angle_ACol = new TableColumn<Triangle, String>("Angle A");
+        TableColumn<Triangle, String> right_angle_BCol = new TableColumn<Triangle, String>("Angle B");
+        TableColumn<Triangle, String> right_angle_CCol = new TableColumn<Triangle, String>("Angle C");
+        TableColumn<Triangle, String> right_perimeterCol = new TableColumn<Triangle, String>("Perimeter");
+        TableColumn<Triangle, String> right_squareCol = new TableColumn<Triangle, String>("Square");
+
+        right_x1Col.setCellValueFactory(new PropertyValueFactory<>("x1"));
+        right_x2Col.setCellValueFactory(new PropertyValueFactory<>("x2"));
+        right_x3Col.setCellValueFactory(new PropertyValueFactory<>("x3"));
+        right_y1Col.setCellValueFactory(new PropertyValueFactory<>("y1"));
+        right_y2Col.setCellValueFactory(new PropertyValueFactory<>("y2"));
+        right_y3Col.setCellValueFactory(new PropertyValueFactory<>("y3"));
+        right_angle_ACol.setCellValueFactory(new PropertyValueFactory<>("angleA"));
+        right_angle_BCol.setCellValueFactory(new PropertyValueFactory<>("angleB"));
+        right_angle_CCol.setCellValueFactory(new PropertyValueFactory<>("angleC"));
+        right_sideACol.setCellValueFactory(new PropertyValueFactory<>("sideA"));
+        right_sideBCol.setCellValueFactory(new PropertyValueFactory<>("sideB"));
+        right_sideCCol.setCellValueFactory(new PropertyValueFactory<>("sideC"));
+        right_perimeterCol.setCellValueFactory(new PropertyValueFactory<>("perimeter"));
+        right_squareCol.setCellValueFactory(new PropertyValueFactory<>("square"));
+
+
+
+        x1Col.setSortType(TableColumn.SortType.DESCENDING);
+        // y2Col.setSortable(false);
+
+        ObservableList<Triangle> right_triangles_list = getRightTriangleList();
+        right_triangle_table.setItems(right_triangles_list);
+
+        right_triangle_table.getColumns().addAll(x1Col, x2Col, x3Col,y1Col, y2Col, y3Col,angle_ACol,angle_BCol,angle_CCol,sideACol,sideBCol,sideCCol,perimeterCol,squareCol);
+
+
+        Label triangles_label = new Label("Triangles:");
+        Label right_triangles_label = new Label("Right Triangles:");
+        Label maxTriangleSquare_label = new Label("Max square of triangles : " + tri_list.findTriangle_List_MaxSquare());
+        Label minTriangleSquare_label = new Label("Min square of triangles : " + tri_list.findTriangle_List_MinSquare());
+        Label maxRightTriangleSquare_label = new Label("Max square of right triangles : " + right_tri_list.findTriangle_List_MaxSquare());
+        Label minRightTriangleSquare_label = new Label("Min square of right triangles : " + right_tri_list.findTriangle_List_MaxSquare());
+        Label identicalRightTriangles_label = new Label("Numbers of identical right Triangles : " + right_tri_list.findIdentical_List_Triangles());
+
+
+        triangles_label.setPadding(new Insets(15));
+        triangles_label.setFont(Font.font(15));
+
+        right_triangles_label.setPadding(new Insets(15));
+        right_triangles_label.setFont(Font.font(15));
+
+
+
+        VBox root = new VBox();
         root.setPadding(new Insets(5));
-        root.getChildren().add(table);
+        root.getChildren().add(triangles_label);
+        root.getChildren().add(triangle_table);
+        root.getChildren().add(maxTriangleSquare_label);
+        root.getChildren().add(minTriangleSquare_label);
+        root.getChildren().add(right_triangles_label);
+        root.getChildren().add(right_triangle_table);
+        root.getChildren().add(minRightTriangleSquare_label);
+        root.getChildren().add(maxRightTriangleSquare_label);
+        root.getChildren().add(identicalRightTriangles_label);
 
         stage.setTitle("Triangles TableView");
 
 
-        Scene scene = new Scene(root, 450, 300);
+        Scene scene = new Scene(root, 1300, 500);
         stage.setScene(scene);
         stage.show();
+    }
+    private ObservableList<Triangle> getTriangleList() {
 
+        final int N = 5;
+        final int M = 5;
+        final int MAX_SIDE_LENGTH = 25;
+        int X1, X2, X3;
+        int Y1, Y2, Y3;
+
+        ObservableList<Triangle> triangle_list = FXCollections.observableArrayList();
+
+
+        for (int i = 0; i < N; i++) {
+            while (!Triangle.isTriangleExists(X1 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, X2 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, X3 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, Y1 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, Y2 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, Y3 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5)) {
+            }
+            triangle_list.add(new Triangle(X1, X2, X3, Y1, Y2, Y3));//Чтобы объект не пересоздавать,называется анонимный объект
+
+            tri_list.add(new Triangle(X1, X2, X3, Y1, Y2, Y3));
+        }
+     //   System.out.println("Triangle with maximal square:" + triangles_list.findTriangle_List_MaxSquare());
+        return triangle_list;
 
     }
-//    private ObservableList<Triangle> getTriagnleList() {
-//
-//        Triangles_List triangles_list = new Triangles_List();
-//        final int N = 5;
-//        final int M = 5;
-//        final int MAX_SIDE_LENGTH = 25;
-//        int X1, X2, X3;
-//        int Y1, Y2, Y3;
-//
-//        for (int i = 0; i < N; i++) {
-//            while (!Triangle.isTriangleExists(X1 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, X2 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, X3 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, Y1 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, Y2 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, Y3 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5)) {
-//            }
-//            triangles_list.add(new Triangle(X1, X2, X3, Y1, Y2, Y3));//Чтобы объект не пересоздавать,называется анонимный объект
-//        }
-//
-//
-//        Triangle triangle1 = new Triangle(3, 4, 5, 0, 4, 1);
-//        Triangle triangle2 = new Triangle(5, 3, 4, 1, 1, 1);
-//
-//        //ObservableList<Triangle> list = FXCollections.observableArrayList(triangle1,triangle2);
-//        ObservableList<Triangle> list = FXCollections.observableArrayList(triangle1,triangle2);
-//        return list;
+
+    private ObservableList<Triangle> getRightTriangleList() {
+
+        final int N = 5;
+        final int M = 15;
+        final int MAX_SIDE_LENGTH = 25;
+        int X1, X2, X3;
+        int Y1, Y2, Y3;
+
+        right_tri_list.add(new Triangle(0,0,0,6,4,1));
+        right_tri_list.add(new Triangle(0,0,0,6,4,1));
+
+        ObservableList<Triangle> right_triangle_list = FXCollections.observableArrayList();
+
+        for (int i = 0; i < M; i++) {
+            while (!RightTriangle.isTriangleRight(X1 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, X2 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, X3 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, Y1 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, Y2 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, Y3 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5)) {
+            }
+            right_triangle_list.add(new RightTriangle(X1, X2, X3, Y1, Y2, Y3));//Чтобы объект не пересоздавать,называется анонимный объект
+            right_tri_list.add(new RightTriangle(X1, X2, X3, Y1, Y2, Y3));
+        }
 
 
-//    }
+        return right_triangle_list;
+
+    }
 }
