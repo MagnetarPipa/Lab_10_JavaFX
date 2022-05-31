@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -106,13 +107,13 @@ public class HelloApplication extends Application {
 
 
 
-        x1Col.setSortType(TableColumn.SortType.DESCENDING);
+        right_x1Col.setSortType(TableColumn.SortType.DESCENDING);
         // y2Col.setSortable(false);
 
         ObservableList<Triangle> right_triangles_list = getRightTriangleList();
         right_triangle_table.setItems(right_triangles_list);
 
-        right_triangle_table.getColumns().addAll(x1Col, x2Col, x3Col,y1Col, y2Col, y3Col,angle_ACol,angle_BCol,angle_CCol,sideACol,sideBCol,sideCCol,perimeterCol,squareCol);
+        right_triangle_table.getColumns().addAll( right_x1Col,  right_x2Col,  right_x3Col, right_y1Col,  right_y2Col,  right_y3Col,right_angle_ACol,right_angle_BCol,right_angle_CCol,right_sideACol,right_sideBCol,right_sideCCol,right_perimeterCol,right_squareCol);
 
 
         Label triangles_label = new Label("Triangles:");
@@ -120,7 +121,7 @@ public class HelloApplication extends Application {
         Label maxTriangleSquare_label = new Label("Max square of triangles : " + tri_list.findTriangle_List_MaxSquare());
         Label minTriangleSquare_label = new Label("Min square of triangles : " + tri_list.findTriangle_List_MinSquare());
         Label maxRightTriangleSquare_label = new Label("Max square of right triangles : " + right_tri_list.findTriangle_List_MaxSquare());
-        Label minRightTriangleSquare_label = new Label("Min square of right triangles : " + right_tri_list.findTriangle_List_MaxSquare());
+        Label minRightTriangleSquare_label = new Label("Min square of right triangles : " + right_tri_list.findTriangle_List_MinSquare());
         Label identicalRightTriangles_label = new Label("Numbers of identical right Triangles : " + right_tri_list.findIdentical_List_Triangles());
 
 
@@ -129,8 +130,6 @@ public class HelloApplication extends Application {
 
         right_triangles_label.setPadding(new Insets(15));
         right_triangles_label.setFont(Font.font(15));
-
-
 
         VBox root = new VBox();
         root.setPadding(new Insets(5));
@@ -144,6 +143,7 @@ public class HelloApplication extends Application {
         root.getChildren().add(maxRightTriangleSquare_label);
         root.getChildren().add(identicalRightTriangles_label);
 
+        stage.getIcons().add(new Image("https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Green_equilateral_triangle_point_up.svg/2363px-Green_equilateral_triangle_point_up.svg.png"));
         stage.setTitle("Triangles TableView");
 
 
@@ -154,7 +154,6 @@ public class HelloApplication extends Application {
     private ObservableList<Triangle> getTriangleList() {
 
         final int N = 5;
-        final int M = 5;
         final int MAX_SIDE_LENGTH = 25;
         int X1, X2, X3;
         int Y1, Y2, Y3;
@@ -166,18 +165,15 @@ public class HelloApplication extends Application {
             while (!Triangle.isTriangleExists(X1 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, X2 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, X3 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, Y1 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, Y2 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5, Y3 = (int) (Math.random() * MAX_SIDE_LENGTH) - 5)) {
             }
             triangle_list.add(new Triangle(X1, X2, X3, Y1, Y2, Y3));//Чтобы объект не пересоздавать,называется анонимный объект
-
             tri_list.add(new Triangle(X1, X2, X3, Y1, Y2, Y3));
         }
-     //   System.out.println("Triangle with maximal square:" + triangles_list.findTriangle_List_MaxSquare());
         return triangle_list;
 
     }
 
     private ObservableList<Triangle> getRightTriangleList() {
 
-        final int N = 5;
-        final int M = 15;
+        final int M = 5;
         final int MAX_SIDE_LENGTH = 25;
         int X1, X2, X3;
         int Y1, Y2, Y3;
