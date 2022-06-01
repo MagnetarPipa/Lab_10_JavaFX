@@ -193,7 +193,7 @@ public class HelloApplication extends Application {
             right_triangle_list.add(new RightTriangle(X1, X2, X3, Y1, Y2, Y3));//Чтобы объект не пересоздавать,называется анонимный объект
             right_tri_list.add(new RightTriangle(X1, X2, X3, Y1, Y2, Y3));
         }
-        right_tri_list.add(new Triangle(0,0,0,6,4,1));
+        //right_tri_list.add(new Triangle(0,0,0,6,4,1));
 
         return right_triangle_list;
 
